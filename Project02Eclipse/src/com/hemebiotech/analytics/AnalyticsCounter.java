@@ -15,7 +15,7 @@ public class AnalyticsCounter {
 	public static void main(String args[]) throws Exception {
 		
 		ISymptomReader symptomReader = new ReadSymptomDataFromFile("C:\\Users\\33629\\git\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
-		/*List list = symptomReader.GetSymptoms();
+		List list = symptomReader.GetSymptoms();
 				
 		int i = 0; // set i to 0
 		int headCount = 0; // counts headaches
@@ -32,7 +32,7 @@ public class AnalyticsCounter {
 			}
 
 			i++; // increment i
-		}*/
+		}
 
 		// next generate output
 		FileWriter writer = new FileWriter("result.out");

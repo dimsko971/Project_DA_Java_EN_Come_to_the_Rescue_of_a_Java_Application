@@ -15,29 +15,12 @@ public class AnalyticsCounter {
 	public static void main(String args[]) throws Exception {
 		
 		ISymptomReader symptomReader = new ReadSymptomDataFromFile("C:\\Users\\33629\\git\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
-		List list = symptomReader.GetSymptoms();
-				
-		int i = 0; // set i to 0
-		while (i < list.size()) {
-			String line = (String) list.get(i);
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headacheCount++;
-				System.out.println("number of headaches: " + headacheCount);
-			} else if (line.equals("rash")) {
-				rashCount++;
-			} else if (line.contains("pupils")) {
-				pupilCount++;
-			}
-
-			i++; // increment i
-		}
-
+		Map<String, Long> counts = symptomReader.GetSymptoms().stream().collect(Collectors.groupingBy(e ->e, Collectors.counting()));
+		TreeMap<String, Long> sorted = new TreeMap<String, Long>(counts);	
+		
 		// next generate output
 		FileWriter writer = new FileWriter("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
+		writer.write(sorted.toString());
 		writer.close();
 	}
 }

@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import java.util.*;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0; // initialize to 0
-	private static int rashCount = 0; // initialize to 0
-	private static int pupilCount = 0; // initialize to 0
+	private static int headacheCount = 0; // variable of the number of headache
+	private static int rashCount = 0; // variable of the number of rash
+	private static int pupilCount = 0; // variable of the number of pupil
 
 	public static void main(String args[]) throws Exception {
 		
@@ -18,14 +18,13 @@ public class AnalyticsCounter {
 		List list = symptomReader.GetSymptoms();
 				
 		int i = 0; // set i to 0
-		int headCount = 0; // counts headaches
 		while (i < list.size()) {
 			String line = (String) list.get(i);
 			System.out.println("symptom from file: " + line);
 			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			} else if (line.equals("rush")) {
+				headacheCount++;
+				System.out.println("number of headaches: " + headacheCount);
+			} else if (line.equals("rash")) {
 				rashCount++;
 			} else if (line.contains("pupils")) {
 				pupilCount++;
